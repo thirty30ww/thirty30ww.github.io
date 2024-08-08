@@ -20,15 +20,6 @@
   </url>
   
   <url>
-    <loc>https://thirty30ww.github.io/posts/b2519fd8.html</loc>
-    
-    <lastmod>2024-08-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://thirty30ww.github.io/posts/63dfc3c1.html</loc>
     
     <lastmod>2024-08-08</lastmod>
@@ -120,6 +111,15 @@
   
   <url>
     <loc>https://thirty30ww.github.io/categories/index.html</loc>
+    
+    <lastmod>2024-08-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://thirty30ww.github.io/posts/b2519fd8.html</loc>
     
     <lastmod>2024-08-08</lastmod>
     
