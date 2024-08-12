@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>静脉注射血液浓度问题</title>
+      <link href="/posts/569e446b.html"/>
+      <url>/posts/569e446b.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="静脉注射血液浓度问题"><a href="#静脉注射血液浓度问题" class="headerlink" title="静脉注射血液浓度问题"></a>静脉注射血液浓度问题</h1><h2 id="题干"><a href="#题干" class="headerlink" title="题干"></a>题干</h2><p><img src="https://thirty30ww.oss-cn-hangzhou.aliyuncs.com/img/202408121032592.png" alt="image-20240812103207455"></p><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>经过对数据的分析得出时间 <code>t</code> 与浓度 <code>R</code> 大概呈指数关系</p><p>设</p><script type="math/tex; mode=display">c(t) = c_0 e^{-kt}</script><p><code>c、 k</code> 为待定系数，$k &gt; 0$</p><h3 id="Python求解"><a href="#Python求解" class="headerlink" title="Python求解"></a>Python求解</h3><div class="tabs" id="test1"><ul class="nav-tabs"><button type="button" class="tab  active" data-href="test1-1">Python代码</button><button type="button" class="tab " data-href="test1-2">运行结果</button></ul><div class="tab-contents"><div class="tab-item-content active" id="test1-1"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> curve_fit</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fun</span>(<span class="params">t, k, c</span>): <span class="comment">#定义拟合函数</span></span><br><span class="line">    <span class="keyword">return</span> c * np.exp(k * t)</span><br><span class="line"></span><br><span class="line">t0=np.array([<span class="number">0.25</span>, <span class="number">0.5</span>, <span class="number">1</span>, <span class="number">1.5</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>])</span><br><span class="line">c0=np.array([<span class="number">19.21</span>, <span class="number">18.15</span>, <span class="number">15.36</span>, <span class="number">14.1</span>, <span class="number">12.89</span>, <span class="number">9.32</span>, <span class="number">7.45</span>, <span class="number">5.24</span>, <span class="number">3.01</span>])</span><br><span class="line">popt, pcov=curve_fit(fun, t0, c0) <span class="comment">#用curve_fit函数拟合</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;k与c0的拟合值为&quot;</span>, popt)</span><br><span class="line"></span><br><span class="line">kk = popt[<span class="number">0</span>]</span><br><span class="line">cc = popt[<span class="number">1</span>]</span><br><span class="line">cyals = fun(t0, kk, cc)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画图</span></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>)) <span class="comment"># 设置图形的宽度为10英寸，高度为6英寸</span></span><br><span class="line">plt.rc(<span class="string">&#x27;font&#x27;</span>, size=<span class="number">16</span>) <span class="comment"># 设置了所有字体的大小为 16</span></span><br><span class="line">plt.xlabel(<span class="string">&#x27;t(℃)&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;R(Ω)&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.plot(t0, c0, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">plt.plot(t0, cyals, <span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div><div class="tab-item-content" id="test1-2"><p><img src="https://thirty30ww.oss-cn-hangzhou.aliyuncs.com/img/202408121113317.png" alt="image-20240812111342666"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k与c0的拟合值为 [-0.24197009 20.24132534]</span><br></pre></td></tr></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div><p>即</p><script type="math/tex; mode=display">c(t) = 20.24132534 e ^ {-0.24197009t}</script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数学建模 </category>
+          
+          <category> 拟合问题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学建模 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>电阻问题</title>
+      <link href="/posts/35449c43.html"/>
+      <url>/posts/35449c43.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="电阻问题"><a href="#电阻问题" class="headerlink" title="电阻问题"></a>电阻问题</h1><h2 id="题干"><a href="#题干" class="headerlink" title="题干"></a>题干</h2><p>已知热敏电阻数据</p><div class="table-container"><table><thead><tr><th style="text-align:center">温度t(ºC)</th><th style="text-align:center">20.5</th><th style="text-align:center">32.7</th><th style="text-align:center">51.0</th><th style="text-align:center">73.0</th><th style="text-align:center">95.7</th></tr></thead><tbody><tr><td style="text-align:center">电阻R(Ω)</td><td style="text-align:center">765</td><td style="text-align:center">826</td><td style="text-align:center">873</td><td style="text-align:center">942</td><td style="text-align:center">1032</td></tr></tbody></table></div><p>画出电阻 <code>R</code> 温度 <code>t</code> 的关系图并求出 <code>60ºC</code> 时的电阻 <code>R</code></p><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>经过对数据的分析得出温度 <code>t</code> 与电阻 <code>R</code> 大概呈线性关系</p><p>则设</p><script type="math/tex; mode=display">R = at + b</script><p>其中 <code>a, b</code> 为待定系数</p><h3 id="Python求解"><a href="#Python求解" class="headerlink" title="Python求解"></a>Python求解</h3><div class="tabs" id="test1"><ul class="nav-tabs"><button type="button" class="tab  active" data-href="test1-1">Python代码</button><button type="button" class="tab " data-href="test1-2">运行结果</button></ul><div class="tab-contents"><div class="tab-item-content active" id="test1-1"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">x0 = np.array([<span class="number">20.5</span>, <span class="number">32.7</span>, <span class="number">51</span>, <span class="number">73</span>, <span class="number">95.7</span>])</span><br><span class="line">y0 = np.array([<span class="number">765</span>, <span class="number">826</span>, <span class="number">873</span>, <span class="number">942</span>, <span class="number">1032</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出多项式各项的系数以及预测值</span></span><br><span class="line">p = np.polyfit(x0, y0, <span class="number">1</span>)  <span class="comment"># 拟合多项式 (1次)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;拟合一次多项式的从高次幂到低次幂系数分别为:&quot;</span>, p)</span><br><span class="line">yhat = np.polyval(p, [<span class="number">60</span>])  <span class="comment"># 预测</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;预测值分别为：&quot;</span>, yhat)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画图</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">6</span>)) <span class="comment"># 设置图形的宽度为10英寸，高度为6英寸</span></span><br><span class="line">plt.rc(<span class="string">&#x27;font&#x27;</span>, size=<span class="number">16</span>) <span class="comment"># 设置了所有字体的大小为 16</span></span><br><span class="line">plt.plot(x0, y0, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">plt.plot(x0, np.polyval(p, x0), <span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;t(℃)&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;R(Ω)&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div><div class="tab-item-content" id="test1-2"><p><img src="https://thirty30ww.oss-cn-hangzhou.aliyuncs.com/img/202408121013897.png" alt="image-20240812101324860" style="zoom: 33%;" /></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">拟合一次多项式的从高次幂到低次幂系数分别为: [  3.39873934 702.09680686]</span><br><span class="line">预测值分别为： [906.02116722]</span><br></pre></td></tr></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div><h3 id="运行结果分析"><a href="#运行结果分析" class="headerlink" title="运行结果分析"></a>运行结果分析</h3><p>该一次函数为</p><script type="math/tex; mode=display">y = 3.39873934x +  702.09680686</script><p>当 $t = 60$ 时，$ R = 906.02116722 $ </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数学建模 </category>
+          
+          <category> 拟合问题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学建模 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>快速上手LaTeX论文编写</title>
       <link href="/posts/63dfc3c1.html"/>
       <url>/posts/63dfc3c1.html</url>
